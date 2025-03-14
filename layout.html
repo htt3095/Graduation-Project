@@ -10,6 +10,34 @@
 
 
 <body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">×</a>
+
+        <!-- General Settings Box as its own list -->
+        <div class="settings-box">
+            <ul>
+                <li><a href="#">General Settings</a></li>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">Change Light Mode</label>
+                    <input type="checkbox" id="light-mode-toggle" onchange="toggleLightMode()">
+                </li>
+            </ul>
+        </div>
+
+        <!-- Empty Box Below Settings -->
+        <div class="empty-box">
+            <ul>
+                <!-- Additional content can go here later -->
+            </ul>
+        </div>
+
+        <!-- Other Sidebar Links -->
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
     <header>
         <div class="search-container">
             <div class="IMG_BOX"></div>
@@ -23,10 +51,11 @@
         <button class="no-button-look"> HOME</button>
         <button class="no-button-look"> CATEGORIES</button>
         <button class="no-button-look"> CONTACT US</button>
-        <button class="no-button-look"> SETTINGS</button>
+        <button class="no-button-look" onclick="openNav()"> SETTINGS</button>
     </nav>
     <article></article>
     <footer></footer>
+    <script src="code.js"></script>
 </body>
 
 </html>

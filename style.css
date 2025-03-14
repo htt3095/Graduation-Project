@@ -79,3 +79,165 @@ footer {
     font-size: 1.5rem;
     margin-left: 15rem;
 }
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+/* General Settings Box */
+
+.settings-box {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+    /* Adds space between the boxes */
+}
+
+.settings-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.settings-box li {
+    margin-bottom: 10px;
+    /* Space between items */
+}
+
+.settings-box a {
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+}
+
+.settings-box a:hover {
+    background-color: #575757;
+}
+
+
+/* Light Mode Toggle Setting */
+
+.light-mode-setting {
+    display: flex;
+    align-items: center;
+}
+
+.light-mode-setting label {
+    color: white;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+#light-mode-toggle {
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #ccc;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#light-mode-toggle:checked {
+    background-color: #4CAF50;
+    /* Green when toggled on */
+}
+
+#light-mode-toggle:checked::before {
+    transform: translateX(20px);
+}
+
+#light-mode-toggle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+
+/* Empty Box Below Settings */
+
+.empty-box {
+    background-color: #444;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.empty-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.empty-box li {
+    margin-bottom: 10px;
+    /* Space between items */
+}
+
+.empty-box a {
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+}
+
+.empty-box a:hover {
+    background-color: #575757;
+}
+
+
+/* Style for other links in the sidebar */
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    /* Space between items */
+}
+
+.sidebar a {
+    color: #818181;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
