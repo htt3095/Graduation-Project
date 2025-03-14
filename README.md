@@ -1,2 +1,3 @@
 # Graduation-Project
-123g
+
+- Change it to whole screen
