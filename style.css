@@ -63,7 +63,7 @@ footer {
 .IMG_BOX {
     width: 5rem;
     height: 4rem;
-    background-image: url('img/logoWEB2.jpg');
+    background-image: url('img/logoWEB3.jpg');
     background-size: cover;
     margin-top: 0.5rem;
     margin-left: 1.5rem;
@@ -78,6 +78,7 @@ footer {
     color: white;
     font-size: 1.5rem;
     margin-left: 15rem;
+    text-decoration: none;
 }
 
 .sidebar {
