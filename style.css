@@ -61,11 +61,11 @@ footer {
 }
 
 .IMG_BOX {
-    width: 5rem;
-    height: 4rem;
-    background-image: url('img/logoWEB3.jpg');
+    width: 7rem;
+    height: 6rem;
+    background-image: url('img/logoWEB3.png');
     background-size: cover;
-    margin-top: 0.5rem;
+    margin-top: 0rem;
     margin-left: 1.5rem;
 }
 

@@ -187,3 +187,8 @@ input {
 .signup-link a:hover {
     text-decoration: underline;
 }
+
+.image-section {
+    background-size: cover;
+    background-image: url('img/nhà_nghèo.jpg');
+}
