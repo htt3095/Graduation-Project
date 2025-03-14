@@ -94,7 +94,7 @@ footer {
 }
 
 .sidebar a {
-    padding: 8px 8px 8px 32px;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -161,5 +161,78 @@ footer {
 }
 
 .sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar2 {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar2 a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar2 a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar2 .closebtn2 {
+    position: absolute;
+    top: 0;
+    right: 1.5625rem;
+    font-size: 2.25rem;
+    margin-left: 3.125rem;
+}
+
+.settings-box2 {
+    background-color: #333;
+    padding: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.settings-box2 ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.settings-box2 li {
+    margin-bottom: 0.625rem;
+}
+
+.settings-box2 a {
+    color: white;
+    font-size: 1.125rem;
+    padding: 0.625rem;
+    display: block;
+}
+
+.sidebar2 ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar2 li {
+    margin-bottom: 0.625rem;
+}
+
+.sidebar2 a {
+    color: #818181;
+}
+
+.sidebar2 a:hover {
     color: #f1f1f1;
 }

@@ -12,8 +12,6 @@
 <body>
     <div class="sidebar" id="sidebar">
         <a href="#" class="closebtn" onclick="closeNav()">×</a>
-
-        <!-- General Settings Box as its own list -->
         <div class="settings-box">
             <ul>
                 <li><a href="#">General Settings</a></li>
@@ -21,6 +19,18 @@
                     <label for="light-mode-toggle">Change Light Mode</label>
                     <input type="checkbox" id="light-mode-toggle" onchange="toggleLightMode()">
                 </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar2" id="sidebar2">
+        <a href="#" class="closebtn2" onclick="closeNav2()">×</a>
+        <div class="settings-box2">
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Adventure</a></li>
+                <li><a href="#">RPG</a></li>
+                <li><a href="#">Strategy</a></li>
+                <li><a href="#">Horror</a></li>
             </ul>
         </div>
     </div>
@@ -35,7 +45,7 @@
     </header>
     <nav>
         <button class="no-button-look"> HOME</button>
-        <button class="no-button-look"> CATEGORIES</button>
+        <button class="no-button-look" onclick="openNav2()"> CATEGORIES</button>
         <button class="no-button-look"> CONTACT US</button>
         <button class="no-button-look" onclick="openNav()"> SETTINGS</button>
     </nav>
