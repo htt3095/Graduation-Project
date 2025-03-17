@@ -15,9 +15,9 @@ body {
 
 .container {
     display: flex;
-    width: 80%;
+    width: 90%;
     max-width: 1000px;
-    height: 600px;
+    height: 42rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
