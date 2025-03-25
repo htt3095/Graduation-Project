@@ -1,47 +1,61 @@
+package GradProject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@WebServlet("/games")
 public class GameServlet extends HttpServlet {
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=gamesite;user=sa;password=1234;encrypt=true;trustServerCertificate=true";
+    private static final long serialVersionUID = 1L;
+
+    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=gamesite;encrypt=true;trustServerCertificate=true";
+    private static final String USER = "sa";
+    private static final String PASSWORD = "1234";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
 
-        try (Connection conn = DriverManager.getConnection(URL)) {
-            String sql = "SELECT GameID, Name, Genre, ImageURL FROM Games";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        JSONArray gamesArray = new JSONArray();
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+            String query = "SELECT g.game_id, g.name, c.category_name, g.price, g.image_url, g.release_date " +
+                           "FROM Games g " +
+                           "JOIN Categories c ON g.category_id = c.category_id"; 
+
+            PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
 
-            StringBuilder json = new StringBuilder("[");
             while (rs.next()) {
-                if (json.length() > 1) json.append(",");
-                json.append("{")
-                    .append("\"id\":").append(rs.getInt("GameID")).append(",")
-                    .append("\"name\":\"").append(rs.getString("Name")).append("\",")
-                    .append("\"genre\":\"").append(rs.getString("Genre")).append("\",")
-                    .append("\"image\":\"").append(rs.getString("ImageURL")).append("\"")
-                    .append("}");
+                JSONObject gameObject = new JSONObject();
+                gameObject.put("game_id", rs.getInt("game_id"));
+                gameObject.put("name", rs.getString("name"));
+                gameObject.put("category_name", rs.getString("category_name"));
+                gameObject.put("price", rs.getDouble("price"));
+                gameObject.put("image_url", rs.getString("image_url"));
+                gameObject.put("release_date", rs.getString("release_date"));
+
+                gamesArray.put(gameObject);
             }
-            json.append("]");
-            out.print(json.toString());
-            out.flush();
-        } catch (SQLException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            response.getWriter().write("{\"error\":\"Internal Server Error\"}");
+            return;
         }
+
+        PrintWriter out = response.getWriter();
+        out.print(gamesArray.toString());
+        out.flush();
     }
 }

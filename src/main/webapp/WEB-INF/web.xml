@@ -2,25 +2,24 @@
 <web-app xmlns="http://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://jakarta.ee/xml/ns/jakartaee
-         http://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-         version="5.0">
+                             http://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0"
+         metadata-complete="true">
+  
+  <display-name>Graduation Project</display-name>
 
-    <display-name>Graduation Project</display-name>
+  <!-- Servlet mapping from web.xml only -->
+  <servlet>
+      <servlet-name>GameServlet</servlet-name>
+      <servlet-class>GradProject.GameServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+      <servlet-name>GameServlet</servlet-name>
+      <url-pattern>/games</url-pattern>
+  </servlet-mapping>
 
-    <!-- Servlet Configuration -->
-    <servlet>
-        <servlet-name>GameServlet</servlet-name>
-        <servlet-class>GradProject.GameServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>GameServlet</servlet-name>
-        <url-pattern>/games</url-pattern>
-    </servlet-mapping>
-
-    <!-- Welcome Page -->
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
-
+  <welcome-file-list>
+      <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 </web-app>
