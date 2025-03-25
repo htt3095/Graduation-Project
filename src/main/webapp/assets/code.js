@@ -19,34 +19,20 @@ function closeNav2() {
 }
 async function fetchGames() {
     try {
-        console.log("Fetching games from server...");
-        const response = await fetch('/GradProject/games'); // Adjust URL based on deployment
+        const response = await fetch('/Graduation-Project/GameServlet'); // Adjust to your actual path
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`Server error: ${response.status}`);
         }
-
         const games = await response.json();
         console.log("Games received:", games);
-
-        const gameContainer = document.getElementById("game-container");
-        gameContainer.innerHTML = ""; // Clear existing content
-
-        games.forEach(game => {
-            const gameBox = document.createElement("div");
-            gameBox.classList.add("game-box");
-            gameBox.innerHTML = `
-                <img src="${game.image_url}" alt="${game.title}">
-                <h3>${game.title}</h3>
-                <p>Genre: ${game.genre}</p>
-                <p>Price: $${game.price.toFixed(2)}</p>
-                <p>Release Date: ${game.release_date}</p>
-            `;
-            gameContainer.appendChild(gameBox);
-        });
-
+        if (games.length === 0) {
+            console.warn("No games found in database.");
+        }
+        return games;
     } catch (error) {
-        console.error("Error fetching game data:", error);
+        console.error("Failed to fetch games:", error);
     }
 }
 
-document.addEventListener("DOMContentLoaded", fetchGames);
+// Call the function
+fetchGames();
