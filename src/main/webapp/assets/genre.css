@@ -1,0 +1,374 @@
+body {
+    margin: 0%;
+    padding: 0%;
+}
+
+header {
+    height: 5rem;
+    width: 100%;
+    background-color: #1b1a1a;
+}
+
+nav {
+    height: 5rem;
+    width: 100%;
+    background-color: #1b1a1a;
+    border-top: 0.15rem groove white;
+    border-bottom: 0.15rem groove white;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+}
+
+article {
+    height: 30rem;
+    width: 100%;
+    background-color: #1b1a1a;
+}
+
+footer {
+    height: 14rem;
+    width: 100%;
+    background-color: #1b1a1a;
+    border-top: 0.15rem groove white;
+    color: white;
+}
+
+.no-button-look {
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 12.5rem;
+    margin-right: 1rem;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+}
+
+.search-bar {
+    height: 2rem;
+    width: 45rem;
+    font-size: 1rem;
+    margin-left: 15rem;
+}
+
+.IMG_BOX {
+    width: 8rem;
+    height: 5rem;
+    background-image: url('img/logoWEB.jpg');
+    background-size: cover;
+    margin-top: 0rem;
+    margin-left: 1.5rem;
+}
+
+.no-button-look2 {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 15rem;
+    text-decoration: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 1.5625rem;
+    font-size: 2.25rem;
+    margin-left: 3.125rem;
+}
+
+.settings-box {
+    background-color: #333;
+    padding: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.settings-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.settings-box li {
+    margin-bottom: 0.625rem;
+}
+
+.settings-box a {
+    color: white;
+    font-size: 1.125rem;
+    padding: 0.625rem;
+    display: block;
+}
+
+.light-mode-setting {
+    display: flex;
+    align-items: center;
+}
+
+.light-mode-setting label {
+    color: white;
+    margin-right: 0.625rem;
+    font-size: 1.125rem;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar li {
+    margin-bottom: 0.625rem;
+}
+
+.sidebar a {
+    color: #818181;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar2 {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar2 a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar2 a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar2 .closebtn2 {
+    position: absolute;
+    top: 0;
+    right: 1.5625rem;
+    font-size: 2.25rem;
+    margin-left: 3.125rem;
+}
+
+.settings-box2 {
+    background-color: #333;
+    padding: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.settings-box2 ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.settings-box2 li {
+    margin-bottom: 0.625rem;
+}
+
+.settings-box2 a {
+    color: white;
+    font-size: 1.125rem;
+    padding: 0.625rem;
+    display: block;
+}
+
+.sidebar2 ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar2 li {
+    margin-bottom: 0.625rem;
+}
+
+.sidebar2 a {
+    color: #818181;
+}
+
+.sidebar2 a:hover {
+    color: #f1f1f1;
+}
+
+.memay {
+    margin: 0;
+    padding: 0;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: auto;
+    /* Allow height to adjust based on content */
+    width: 100%;
+    background-color: #1b1a1a;
+    padding: 1rem;
+    /* Optional: add some padding */
+}
+
+
+/* Updated Game Container: One column layout */
+
+#game-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Only one column */
+    gap: 0.625rem;
+    /* 10px → 0.625rem */
+    width: 100%;
+    max-width: 75rem;
+    /* 1200px → 75rem */
+    margin: 0 auto;
+}
+
+
+/* Updated game-box styling for horizontal layout */
+
+.game-box {
+    background-color: #333;
+    color: white;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    box-shadow: 0.1875rem 0.1875rem 0.625rem rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 9.375rem;
+    /* 150px */
+    max-height: 12.5rem;
+    /* 200px */
+}
+
+
+/* Style for the image on the left */
+
+.game-box .game-image {
+    width: 4rem;
+    /* Adjust as needed */
+    height: auto;
+    margin-right: 0.625rem;
+    border-radius: 0.3125rem;
+    /* Optional: rounding corners */
+}
+
+
+/* Container for title and additional details */
+
+.game-box .game-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+
+/* Game title styling */
+
+.game-box .game-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 0.3125rem;
+}
+
+
+/* Game details styling */
+
+.game-box .game-info p {
+    font-size: 0.9rem;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* Price section aligned to the far right */
+
+.game-box .game-price {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 0.625rem;
+    white-space: nowrap;
+}
+
+
+/* Footer Styles remain unchanged */
+
+footer {
+    height: auto;
+    max-height: 10rem;
+    width: 100%;
+    background-color: #1b1a1a;
+    border-top: 0.15rem groove white;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+}
+
+footer div {
+    flex: 1;
+    min-width: 12.5rem;
+    text-align: center;
+}
+
+@media (max-width: 48rem) {
+    /* For smaller screens, the layout remains one column */
+    footer {
+        flex-direction: column;
+        text-align: center;
+        max-height: none;
+    }
+}

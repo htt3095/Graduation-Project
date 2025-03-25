@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="genre.css">
+
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">×</a>
+        <div class="settings-box">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">General Settings</label>
+                </li>
+                <li>
+                    <a href="#">Change light mode <input type="checkbox" id="light-mode-toggle" onchange="toggleLightMode()"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar2" id="sidebar2">
+        <a href="#" class="closebtn2" onclick="closeNav2()">×</a>
+        <div class="settings-box2">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">CATEGORIES</label>
+                </li>
+                <li><a href="action.html">Action</a></li>
+                <li><a href="adventure.html">Adventure</a></li>
+                <li><a href="RPG.html">RPG</a></li>
+                <li><a href="Strategy.html">Strategy</a></li>
+                <li><a href="Horror.html">Horror</a></li>
+            </ul>
+        </div>
+    </div>
+    <header>
+        <div class="search-container">
+            <div class="IMG_BOX"></div>
+            <form>
+                <input type="text" class="search-bar" name="query" placeholder="Search..." required>
+            </form>
+            <a class="no-button-look2" href="login.html"> SIGN IN</a>
+        </div>
+    </header>
+    <nav>
+        <a class="no-button-look" href="layout.html" style="text-decoration: none;"> HOME</a>
+        <button class="no-button-look" onclick="openNav2()"> CATEGORIES</button>
+        <a class="no-button-look" href="about.html" style="text-decoration: none;"> ABOUT US</a>
+        <button class="no-button-look" onclick="openNav()"> SETTINGS</button>
+    </nav>
+    <article>
+        <div id="game-container">
+            <div class="game-box" data-genre="Action">
+                <img class="game-image" src="images/game1.jpg" alt="Game Title 1">
+                <div class="game-info">
+                    <h3>Game Title 1</h3>
+                    <p>Horror | Developer | Year</p>
+                </div>
+                <div class="game-price">$59.99</div>
+            </div>
+
+            <div class="game-box" data-genre="RPG">
+                <img class="game-image" src="images/game2.jpg" alt="Game Title 2">
+                <div class="game-info">
+                    <h3>Game Title 2</h3>
+                    <p>Horror | Developer | Year</p>
+                </div>
+                <div class="game-price">$49.99</div>
+            </div>
+
+            <div class="game-box" data-genre="Strategy">
+                <img class="game-image" src="images/game3.jpg" alt="Game Title 3">
+                <div class="game-info">
+                    <h3>Game Title 3</h3>
+                    <p>Horror | Developer | Year</p>
+                </div>
+                <div class="game-price">$39.99</div>
+            </div>
+
+            <!-- Add more game-box divs as needed -->
+        </div>
+    </article>
+    <footer style=" padding: 10px 0; text-align: center;">
+        <div>
+            <p>&copy; 2025 LouerG. All Rights Reserved.</p>
+        </div>
+
+        <div>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:placeholder@gmail.com" style="color: #FFD700;">placeholder@gmail.com</a></p>
+            <p>Phone: Deo biet</p>
+            <p>Address: placeholder</p>
+        </div>
+
+        <div>
+            <p>
+                <a href="/privacy-policy" style="color: #FFD700;">Privacy Policy</a> |
+                <a href="/terms-of-service" style="color: #FFD700;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+    <script src="code.js"></script>
+</body>
+
+</html>

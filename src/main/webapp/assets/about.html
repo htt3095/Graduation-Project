@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">×</a>
+        <div class="settings-box">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">General Settings</label>
+                </li>
+                <li>
+                    <a href="#">Change light mode <input type="checkbox" id="light-mode-toggle" onchange="toggleLightMode()"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar2" id="sidebar2">
+        <a href="#" class="closebtn2" onclick="closeNav2()">×</a>
+        <div class="settings-box2">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">CATEGORIES</label>
+                </li>
+                <li><a href="action.html">Action</a></li>
+                <li><a href="adventure.html">Adventure</a></li>
+                <li><a href="RPG.html">RPG</a></li>
+                <li><a href="Strategy.html">Strategy</a></li>
+                <li><a href="Horror.html">Horror</a></li>
+            </ul>
+        </div>
+    </div>
+    <header>
+        <div class="search-container">
+            <div class="IMG_BOX"></div>
+            <form>
+                <input type="text" class="search-bar" name="query" placeholder="Search..." required>
+            </form>
+            <a class="no-button-look2" href="login.html"> SIGN IN</a>
+        </div>
+    </header>
+    <nav>
+        <a class="no-button-look" href="layout.html" style="text-decoration: none;"> HOME</a>
+        <button class="no-button-look" onclick="openNav2()"> CATEGORIES</button>
+        <button class="no-button-look"> ABOUT US</button>
+        <button class="no-button-look" onclick="openNav()"> SETTINGS</button>
+    </nav>
+    <article style="color: aquamarine;">
+        <div class="memay2">
+            <h1 class="memay">Về Chúng Tôi – LourG</h1>
+            Chào mừng bạn đến với LourG – thế giới của những trò chơi hấp dẫn và trải nghiệm giải trí đỉnh cao! Tại LourG, chúng tôi không chỉ đơn thuần là một trang web bán game, mà còn là một cộng đồng dành cho những người yêu thích thế giới ảo. Sứ mệnh của chúng
+            tôi là mang đến cho bạn những tựa game chất lượng cao, từ những bom tấn đình đám đến những trò chơi indie sáng tạo, giúp bạn thỏa mãn niềm đam mê khám phá và chinh phục. Tại sao chọn LourG? ✅ Kho game đa dạng – Chúng tôi cập nhật liên tục
+            những tựa game mới nhất thuộc nhiều thể loại khác nhau. ✅ Giá cả cạnh tranh – Luôn có ưu đãi hấp dẫn giúp bạn sở hữu game yêu thích với chi phí hợp lý. ✅ Dịch vụ chuyên nghiệp – Hỗ trợ khách hàng nhanh chóng, tận tâm 24/7. ✅ Giao dịch an toàn
+            – Cam kết bảo mật thông tin, phương thức thanh toán an toàn và đáng tin cậy. LourG không chỉ là nơi để mua game, mà còn là điểm đến lý tưởng để bạn tìm kiếm đánh giá, tin tức và những xu hướng mới nhất trong ngành công nghiệp game. Hãy cùng
+            chúng tôi tạo nên những khoảnh khắc đáng nhớ và kết nối với những game thủ có chung niềm đam mê! LourG – Mở ra thế giới game theo cách của bạn! 🚀🎮
+        </div>
+    </article>
+    <footer style=" padding: 10px 0; text-align: center;">
+        <div>
+            <p>&copy; 2025 LouerG. All Rights Reserved.</p>
+        </div>
+
+        <div>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:placeholder@gmail.com" style="color: #FFD700;">placeholder@gmail.com</a></p>
+            <p>Phone: Deo biet</p>
+            <p>Address: placeholder</p>
+        </div>
+
+        <div>
+            <p>
+                <a href="/privacy-policy" style="color: #FFD700;">Privacy Policy</a> |
+                <a href="/terms-of-service" style="color: #FFD700;">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+    <script src="code.js"></script>
+</body>
+
+</html>
