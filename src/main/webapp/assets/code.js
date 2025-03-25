@@ -17,41 +17,36 @@ function closeNav2() {
     document.getElementById("sidebar2").style.width = "0";
     document.body.style.backgroundColor = "white";
 }
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('/games') // ✅ Changed to match servlet mapping
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(games => {
-            console.log("Fetched games:", games); // Debugging
+async function fetchGames() {
+    try {
+        console.log("Fetching games from server...");
+        const response = await fetch('/GradProject/games'); // Adjust URL based on deployment
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-            let gameContainer = document.getElementById("game-container");
-            gameContainer.innerHTML = ""; // Clear placeholder boxes
+        const games = await response.json();
+        console.log("Games received:", games);
 
-            if (games.length === 0) {
-                gameContainer.innerHTML = "<p>No games available.</p>";
-                return;
-            }
+        const gameContainer = document.getElementById("game-container");
+        gameContainer.innerHTML = ""; // Clear existing content
 
-            games.forEach(game => {
-                let gameBox = document.createElement("div");
-                gameBox.classList.add("game-box");
-                gameBox.dataset.genre = game.category_name || "Unknown";
+        games.forEach(game => {
+            const gameBox = document.createElement("div");
+            gameBox.classList.add("game-box");
+            gameBox.innerHTML = `
+                <img src="${game.image_url}" alt="${game.title}">
+                <h3>${game.title}</h3>
+                <p>Genre: ${game.genre}</p>
+                <p>Price: $${game.price.toFixed(2)}</p>
+                <p>Release Date: ${game.release_date}</p>
+            `;
+            gameContainer.appendChild(gameBox);
+        });
 
-                gameBox.innerHTML = `
-                    <img class="game-image" src="${game.image_url}" alt="${game.name}" onerror="this.src='assets/img/placeholder.jpg';">
-                    <div class="game-info">
-                        <h3>${game.name}</h3>
-                        <p>${game.category_name || "Unknown Genre"} | ${game.release_date || "Unknown Date"}</p>
-                    </div>
-                    <div class="game-price">$${game.price.toFixed(2)}</div>
-                `;
+    } catch (error) {
+        console.error("Error fetching game data:", error);
+    }
+}
 
-                gameContainer.appendChild(gameBox);
-            });
-        })
-        .catch(error => console.error("Error fetching games:", error));
-});
+document.addEventListener("DOMContentLoaded", fetchGames);
