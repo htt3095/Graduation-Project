@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 public class GameServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -28,32 +27,35 @@ public class GameServlet extends HttpServlet {
         JSONArray gamesArray = new JSONArray();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
+            if (conn == null) {
+                System.err.println("Database connection failed.");
+                sendErrorResponse(response, "Database connection failed.", null);
+                return;
+            }
+
             System.out.println("Database connection established.");
 
-            String query = "SELECT game_id, name, category_id, platform_id, developer_id, publisher_id, price, image_url, release_date FROM Games";
-            
+            // Use only columns that exist in your Games table
+            String query = "SELECT name, category_id, price FROM Games";
+
             try (PreparedStatement stmt = conn.prepareStatement(query);
                  ResultSet rs = stmt.executeQuery()) {
-                
+
                 System.out.println("Query executed successfully. Fetching results...");
 
-                int count = 0;
                 while (rs.next()) {
                     JSONObject gameObject = new JSONObject();
-                    gameObject.put("game_id", rs.getInt("game_id"));
                     gameObject.put("name", rs.getString("name"));
                     gameObject.put("category_id", rs.getInt("category_id"));
-                    gameObject.put("platform_id", rs.getInt("platform_id"));
-                    gameObject.put("developer_id", rs.getInt("developer_id"));
-                    gameObject.put("publisher_id", rs.getInt("publisher_id"));
                     gameObject.put("price", rs.getDouble("price"));
-                    gameObject.put("image_url", rs.getString("image_url"));
-                    gameObject.put("release_date", rs.getString("release_date"));
+                    // Provide default values for missing columns
+                    gameObject.put("image_url", "default.jpg");
+                    gameObject.put("release_date", "Unknown");
+                    gameObject.put("developer_id", 0);
                     gamesArray.put(gameObject);
-                    count++;
                 }
 
-                System.out.println("Retrieved " + count + " games.");
+                System.out.println("Retrieved " + gamesArray.length() + " games.");
             }
 
             try (PrintWriter out = response.getWriter()) {
@@ -75,9 +77,13 @@ public class GameServlet extends HttpServlet {
 
     private void sendErrorResponse(HttpServletResponse response, String message, Exception e) throws IOException {
         response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        response.setContentType("application/json");
+
         JSONObject errorResponse = new JSONObject();
         errorResponse.put("error", message);
-        errorResponse.put("details", e.getMessage());
+        if (e != null) {
+            errorResponse.put("details", e.getMessage());
+        }
 
         System.err.println("Error Response Sent: " + errorResponse.toString());
 

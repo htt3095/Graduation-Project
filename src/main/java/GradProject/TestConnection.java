@@ -7,18 +7,21 @@ import java.sql.ResultSet;
 public class TestConnection {
     public static void main(String[] args) {
         System.out.println("Testing database connection...");
-        
+
         try (Connection conn = DatabaseConnection.getConnection()) {
-            System.out.println("Connection successful! Testing query...");
-            
-            String testQuery = "SELECT COUNT(*) AS total FROM Games";
+            System.out.println("Connection successful! Testing sample data query...");
+
+            // Query to fetch sample game data
+            String testQuery = "SELECT TOP 5 name, category_id, price FROM Games";
+
             try (PreparedStatement stmt = conn.prepareStatement(testQuery);
                  ResultSet rs = stmt.executeQuery()) {
-                
-                if (rs.next()) {
-                    System.out.println("Test successful! Found " + rs.getInt("total") + " games in database");
-                } else {
-                    System.out.println("Test query executed but no results returned");
+
+                System.out.println("Retrieved sample game data:");
+                while (rs.next()) {
+                    System.out.println("Game: " + rs.getString("name") + 
+                                       " | Genre ID: " + rs.getInt("category_id") + 
+                                       " | Price: $" + rs.getDouble("price"));
                 }
             }
         } catch (Exception e) {
