@@ -5,9 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=gamesite;encrypt=true;trustServerCertificate=true";
-    private static final String USER = "sa";
-    private static final String PASSWORD = "1234";
+    private static final String DB_URL = "jdbc:sqlserver://LAPTOPMAXXING:1433;databaseName=gamesite;user=sa;password=1234;encrypt=true;trustServerCertificate=true";
+
 
     static {
         try {
@@ -22,7 +21,7 @@ public class DatabaseConnection {
 
     public static Connection getConnection() throws SQLException {
         System.out.println("Attempting to connect to database...");
-        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+        Connection conn = DriverManager.getConnection(DB_URL);
         System.out.println("Database connected successfully!");
         return conn;
     }

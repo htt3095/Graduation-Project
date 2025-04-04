@@ -1,3 +1,4 @@
+// Sidebar functions
 function openNav() {
     document.getElementById("sidebar").style.width = "250px";
     document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
@@ -18,114 +19,97 @@ function closeNav2() {
     document.body.style.backgroundColor = "white";
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    fetchGames();
-});
+document.addEventListener('DOMContentLoaded', function() {
+    var gameContainer = document.querySelector('#game-container');
+    var bodyDataset = document.body.dataset;
+    var currentGenre = '';
 
-function fetchGames() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/Graduation-Project/games", true); // Ensure the correct servlet URL
+    // Get genre from data attribute
+    if (bodyDataset && bodyDataset.genre) {
+        currentGenre = bodyDataset.genre.trim();
+    }
 
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                console.log("Games data received successfully.");
-                var games = JSON.parse(xhr.responseText);
-                if (games.length === 0) {
-                    console.warn("No games found in database.");
-                } else {
-                    filterGamesByGenre(games);
-                }
-            } else {
-                console.error("Failed to fetch games. Server responded with status:", xhr.status);
-            }
-        }
-    };
+    var validGenres = ['Action', 'Adventure', 'RPG', 'Strategy', 'Horror'];
 
-    xhr.send();
-}
-
-function getCurrentGenre() {
-    var path = window.location.pathname; // Example: /genres/Action.html
-    var pageName = path.split("/").pop(); // Extracts "Action.html"
-    var genre = pageName.replace(".html", ""); // Removes ".html" to get "Action"
-    return genre;
-}
-
-function filterGamesByGenre(games) {
-    var genre = getCurrentGenre();
-    console.log("Filtering games for genre:", genre);
-
-    var filteredGames = games.filter(function(game) {
-        return game.category_id === getCategoryId(genre); // Match games by category_id
-    });
-
-    displayGames(filteredGames);
-}
-
-function displayGames(games) {
-    var gameContainer = document.getElementById("game-container");
-    gameContainer.innerHTML = ""; // Clear previous content
-
-    if (games.length === 0) {
-        gameContainer.innerHTML = "<p>No games available for this genre.</p>";
+    // Validate genre configuration
+    if (!validGenres.includes(currentGenre)) {
+        gameContainer.innerHTML = [
+            '<div class="error">',
+            'Configuration error: Invalid/missing genre "', currentGenre, '"<br>',
+            'Valid genres: ', validGenres.join(', '),
+            '</div>'
+        ].join('');
         return;
     }
 
-    games.forEach(function(game) {
-        var gameBox = document.createElement("div");
-        gameBox.className = "game-box";
-        gameBox.setAttribute("data-genre", getCategoryName(game.category_id));
+    // Fetch game data from endpoint
+    fetch('http://localhost:8080/games/games')
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('HTTP error! Status: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(function(games) {
+            var filteredGames = games.filter(function(game) {
+                return game.category === currentGenre;
+            });
 
-        var img = document.createElement("img");
-        img.className = "game-image";
-        img.src = game.image_url;
-        img.alt = game.name;
+            gameContainer.innerHTML = filteredGames.length > 0 ?
+                createGameCards(filteredGames) :
+                createNoGamesMessage(currentGenre);
+        })
+        .catch(function(error) {
+            console.error('Fetch Error:', error);
+            gameContainer.innerHTML = [
+                '<div class="error">',
+                error.message.replace('Unexpected token', 'Server response error'), '<br>',
+                'Verify the endpoint /games/games returns valid JSON',
+                '</div>'
+            ].join('');
+        });
 
-        var gameInfo = document.createElement("div");
-        gameInfo.className = "game-info";
+    function createGameCards(games) {
+        return games.map(function(game) {
+            var imageUrl = game.image_url || 'img/placeholder.jpg';
+            var price = game.price ? game.price.toFixed(2) : '0.00';
+            var publisher = game.publisher || 'Unknown Publisher';
+            var developer = game.developer || 'Unknown Developer';
+            var releaseYear = game.release_date ? new Date(game.release_date).getFullYear() : 'N/A';
+            var genre = game.category || currentGenre;
 
-        var title = document.createElement("h3");
-        title.textContent = game.name;
+            return [
+                '<a href="game-details.html?id=', game.game_id, '" class="game-box-link">',
+                '<div class="game-box">',
+                '<img class="game-image" src="', imageUrl, '" alt="', game.name, '" onerror="this.src=\'img/placeholder.jpg\'">',
+                '<div class="game-info">',
+                '<h3>', game.name, '</h3>',
+                '<div class="game-details">',
+                '<span class="genre">Genre: ', genre, '</span>',
+                '<span class="publisher">Publisher: ', publisher, '</span>',
+                '<span class="developer">Developer: ', developer, '</span>',
+                '<span class="platform">Platform: ', game.platform, '</span>',
+                '<span class="year">Released: ', releaseYear, '</span>',
+                '</div>',
+                '<div class="game-price">$', price, '</div>',
+                '</div>',
+                '</div>',
+                '</a>'
+            ].join('');
+        }).join('');
+    }
 
-        var details = document.createElement("p");
-        details.textContent = getCategoryName(game.category_id) + " | Developer ID: " + game.developer_id + " | " + game.release_date;
+    function createNoGamesMessage(genre) {
+        var links = validGenres.map(function(g) {
+            return '<a href="/', g.toLowerCase(), '.html" class="', (g === genre ? 'current' : ''), '">', g, '</a>';
+        }).join('');
 
-        var price = document.createElement("div");
-        price.className = "game-price";
-        price.textContent = "$" + game.price.toFixed(2);
-
-        gameInfo.appendChild(title);
-        gameInfo.appendChild(details);
-        gameBox.appendChild(img);
-        gameBox.appendChild(gameInfo);
-        gameBox.appendChild(price);
-        gameContainer.appendChild(gameBox);
-    });
-}
-
-// Map category IDs to category names
-function getCategoryName(categoryId) {
-    var categories = {
-        1: "Action",
-        2: "RPG",
-        3: "Adventure",
-        4: "Strategy",
-        5: "Simulation"
-    };
-
-    return categories[categoryId] || "Unknown";
-}
-
-// Map genre names to category IDs
-function getCategoryId(genre) {
-    var categories = {
-        "Action": 1,
-        "RPG": 2,
-        "Adventure": 3,
-        "Strategy": 4,
-        "Simulation": 5
-    };
-
-    return categories[genre] || null;
-}
+        return [
+            '<div class="no-games">',
+            '<h2>No ', genre, ' Games Found</h2>',
+            '<p>Please check back later or browse other categories:</p>',
+            '<div class="genre-links">', links, '</div>',
+            '</div>'
+        ].join('');
+    }
+});

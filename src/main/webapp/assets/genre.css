@@ -1,39 +1,62 @@
+:root {
+    --primary-bg: #1b1a1a;
+    --text-light: white;
+    --game-bg: #2a2a2a;
+    --discount-green: #4CAF50;
+    --accent-color: #ff5722;
+    --border-radius: 0.5rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    margin: 0%;
-    padding: 0%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-bg);
 }
 
 header {
     height: 5rem;
     width: 100%;
-    background-color: #1b1a1a;
+    background-color: var(--primary-bg);
 }
 
 nav {
     height: 5rem;
     width: 100%;
-    background-color: #1b1a1a;
-    border-top: 0.15rem groove white;
-    border-bottom: 0.15rem groove white;
+    background-color: var(--primary-bg);
+    border-top: 0.15rem groove var(--text-light);
+    border-bottom: 0.15rem groove var(--text-light);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    justify-self: flex-start;
+    justify-content: flex-start;
     align-items: center;
 }
 
 article {
-    height: 30rem;
     width: 100%;
-    background-color: #1b1a1a;
+    background-color: var(--primary-bg);
+    padding: var(--spacing-md);
+    flex: 1;
+    min-height: calc(100vh - 24rem);
 }
 
 footer {
     height: 14rem;
     width: 100%;
-    background-color: #1b1a1a;
-    border-top: 0.15rem groove white;
-    color: white;
+    background-color: var(--primary-bg);
+    border-top: 0.15rem groove var(--text-light);
+    color: var(--text-light);
+    margin-top: auto;
 }
 
 .no-button-look {
@@ -50,7 +73,7 @@ footer {
 .search-container {
     width: 100%;
     display: flex;
-    justify-self: flex-start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -244,131 +267,169 @@ footer {
     padding: 0;
 }
 
-article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: auto;
-    /* Allow height to adjust based on content */
-    width: 100%;
-    background-color: #1b1a1a;
-    padding: 1rem;
-    /* Optional: add some padding */
-}
-
-
-/* Updated Game Container: One column layout */
-
 #game-container {
     display: grid;
     grid-template-columns: 1fr;
-    /* Only one column */
-    gap: 0.625rem;
-    /* 10px → 0.625rem */
+    gap: var(--spacing-sm);
     width: 100%;
     max-width: 75rem;
-    /* 1200px → 75rem */
     margin: 0 auto;
+    padding: var(--spacing-md) 0;
 }
 
-
-/* Updated game-box styling for horizontal layout */
-
 .game-box {
-    background-color: #333;
-    color: white;
-    border-radius: 0.625rem;
-    padding: 0.625rem;
+    background-color: var(--game-bg);
+    color: var(--text-light);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
     box-shadow: 0.1875rem 0.1875rem 0.625rem rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: var(--spacing-md);
     min-height: 9.375rem;
-    /* 150px */
-    max-height: 12.5rem;
-    /* 200px */
 }
 
-
-/* Style for the image on the left */
-
-.game-box .game-image {
-    width: 4rem;
-    /* Adjust as needed */
-    height: auto;
-    margin-right: 0.625rem;
-    border-radius: 0.3125rem;
-    /* Optional: rounding corners */
+.game-image {
+    width: 6rem;
+    height: 6rem;
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) / 2);
+    flex-shrink: 0;
 }
 
-
-/* Container for title and additional details */
-
-.game-box .game-info {
+.game-info {
     flex-grow: 1;
-    text-align: left;
+    min-width: 0;
 }
 
-
-/* Game title styling */
-
-.game-box .game-info h3 {
-    font-size: 1.2rem;
-    margin: 0;
-    margin-bottom: 0.3125rem;
+.game-info h3 {
+    font-size: 1.25rem;
+    margin: 0 0 var(--spacing-sm);
+    line-height: 1.2;
 }
 
-
-/* Game details styling */
-
-.game-box .game-info p {
-    font-size: 0.9rem;
-    margin: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.875rem;
+    color: #ccc;
 }
 
-
-/* Price section aligned to the far right */
-
-.game-box .game-price {
-    font-size: 1rem;
+.game-price {
+    font-size: 1.25rem;
     font-weight: bold;
-    margin-left: 0.625rem;
     white-space: nowrap;
+    margin-left: auto;
+    padding-left: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
+.discount {
+    color: var(--discount-green);
+    font-size: 0.875rem;
+    font-weight: normal;
+}
 
-/* Footer Styles remain unchanged */
+.game-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: var(--spacing-md);
+}
+
+.wishlist-btn,
+.cart-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s;
+}
+
+.wishlist-btn:hover,
+.cart-btn:hover {
+    color: var(--accent-color);
+}
 
 footer {
-    height: auto;
-    max-height: 10rem;
     width: 100%;
-    background-color: #1b1a1a;
-    border-top: 0.15rem groove white;
-    color: white;
+    background-color: var(--primary-bg);
+    border-top: 0.15rem groove var(--text-light);
+    color: var(--text-light);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0.625rem 1.25rem;
-    font-size: 0.9rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.875rem;
 }
 
 footer div {
     flex: 1;
     min-width: 12.5rem;
     text-align: center;
+    padding: var(--spacing-sm);
 }
 
 @media (max-width: 48rem) {
-    /* For smaller screens, the layout remains one column */
-    footer {
-        flex-direction: column;
-        text-align: center;
-        max-height: none;
+    .no-button-look,
+    .no-button-look2 {
+        margin-left: 1rem;
+        font-size: 1.2rem;
     }
+    .search-bar {
+        width: 100%;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .search-container {
+        flex-grow: 1;
+    }
+    .IMG_BOX {
+        width: 6rem;
+        margin-left: 0.5rem;
+    }
+    .game-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .game-image {
+        width: 100%;
+        height: auto;
+        max-height: 10rem;
+    }
+    .game-price {
+        margin-left: 0;
+        align-items: flex-start;
+        padding-left: 0;
+    }
+    .game-actions {
+        margin-left: 0;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+    article {
+        min-height: calc(100vh - 19rem);
+    }
+}
+
+.game-box-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.game-box-link:hover .game-box {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.game-box {
+    transition: all 0.3s ease;
 }
