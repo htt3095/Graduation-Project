@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="details.css">
+    <style>
+        body {
+            background-color: var(--primary-bg);
+        }
+        
+        article {
+            background-color: var(--primary-bg);
+            padding: 20px 0;
+        }
+        
+        .game-details-container,
+        .recommendations-container {
+            background-color: var(--game-bg);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            width: 95%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">×</a>
+        <div class="settings-box">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">General Settings</label>
+                </li>
+                <li>
+                    <a href="#">Change light mode <input type="checkbox" id="light-mode-toggle" onchange="toggleLightMode()"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="sidebar2" id="sidebar2">
+        <a href="#" class="closebtn2" onclick="closeNav2()">×</a>
+        <div class="settings-box2">
+            <ul>
+                <li class="light-mode-setting">
+                    <label for="light-mode-toggle">CATEGORIES</label>
+                </li>
+                <li><a href="action.html">Action</a></li>
+                <li><a href="adventure.html">Adventure</a></li>
+                <li><a href="RPG.html">RPG</a></li>
+                <li><a href="Strategy.html">Strategy</a></li>
+                <li><a href="Horror.html">Horror</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="search-container">
+            <div class="IMG_BOX"></div>
+            <form>
+                <input type="text" class="search-bar" name="query" placeholder="Search..." required>
+            </form>
+            <a class="no-button-look2 login-link" href="../login.html"> SIGN IN</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a class="no-button-look" href="../index.html">HOME</a>
+        <button class="no-button-look" onclick="openNav2()">CATEGORIES</button>
+        <a class="no-button-look" href="about.html">ABOUT US</a>
+        <button class="no-button-look" onclick="openNav()">SETTINGS</button>
+    </nav>
+
+    <article>
+        <div class="game-details-container">
+            <!-- Game details content -->
+            <div class="game-details-top">
+                <div class="game-image-container">
+                    <img id="game-image" src="../img/placeholder.jpg" alt="Game Image">
+                </div>
+
+                <div class="game-info-container">
+                    <h1 id="game-title">Game Name: ABCXYZFJDJSKFHSDKFJL</h1>
+
+                    <div class="game-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Category:</span>
+                            <span id="category">abcxyz</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Developer:</span>
+                            <span id="developer">Unknown</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Publisher:</span>
+                            <span id="publisher">Unknown</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Release Date:</span>
+                            <span id="release-date">Unknown</span>
+                        </div>
+                    </div>
+
+                    <div class="game-summary">
+                        <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-price-section">
+                <div class="price-display">
+                    <span id="game-price" class="price-option">200.000 VND</span>
+                </div>
+                <div class="action-buttons">
+                    <button class="add-to-cart">ADD TO CART</button>
+                    <button class="buy-now">BUY NOW</button>
+                </div>
+            </div>
+
+            <div class="game-description-section">
+                <div class="description-header">
+                    <h2>Description</h2>
+                </div>
+                <p id="detailed-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+            </div>
+        </div>
+
+        <div class="recommendations-container">
+            <h2>SIMILAR GAMES YOU MAY LIKE</h2>
+            <div class="similar-games-wrapper">
+                <div class="similar-games-scroll" id="similar-games-slider">
+                    <!-- Similiar game cards inserted by javascript here (details.js) -->
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div>
+            <p>&copy; 2025 LouerG. All Rights Reserved.</p>
+        </div>
+        <div>
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:placeholder@gmail.com">placeholder@gmail.com</a></p>
+            <p>Phone: placeholder</p>
+            <p>Address: placeholder</p>
+        </div>
+        <div>
+            <p>
+                <a href="/privacy-policy">Privacy Policy</a> |
+                <a href="/terms-of-service">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="code.js"></script>
+    <script src="details.js"></script>
+</body>
+
+</html>

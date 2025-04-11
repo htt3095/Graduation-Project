@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <link rel="stylesheet" href="account.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/img/logoWEB3.png" alt="GameSite Logo">
+            </div>
+            <div class="login-link"></div>
+        </div>
+    </header>
+
+    <main class="account-container">
+        <div class="account-header">
+            <h1>Account Information</h1>
+        </div>
+
+        <div class="account-details">
+            <div class="detail-row">
+                <span class="detail-label">Username:</span>
+                <span id="account-username" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Email:</span>
+                <span id="account-email" class="detail-value"></span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-label">Member Since:</span>
+                <span id="account-joindate" class="detail-value"></span>
+            </div>
+        </div>
+
+        <button onclick="logoutUser()" class="logout-btn">Logout</button>
+    </main>
+
+    <script src="assets/js/login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load account data
+            fetch('/games/login/check', {
+                    credentials: 'include'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        window.location.href = 'login.html';
+                        throw new Error('Not authenticated');
+                    }
+                    return response.json();
+                })
+                .then(user => {
+                    document.getElementById('account-username').textContent = user.username;
+                    document.getElementById('account-email').textContent = user.email;
+                    // Update other fields as needed
+                })
+                .catch(() => window.location.href = 'login.html');
+        });
+    </script>
+</body>
+
+</html>
