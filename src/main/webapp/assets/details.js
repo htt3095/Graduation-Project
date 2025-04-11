@@ -14,7 +14,7 @@ function loadGameDetails() {
     }
 
     // First fetch the main game details
-    fetch(`http://localhost:8080/games/details/${gameId}`)
+    fetch(`/games/details/${gameId}`)
         .then(response => {
             if (!response.ok) throw new Error('Game not found');
             return response.json();
@@ -22,7 +22,7 @@ function loadGameDetails() {
         .then(gameData => {
             updateGameDetails(gameData);
             // Then fetch similar games
-            return fetch(`http://localhost:8080/games/similar/${gameId}`);
+            return fetch(`/games/similar/${gameId}`);
         })
         .then(response => {
             if (!response.ok) throw new Error('Failed to fetch similar games');

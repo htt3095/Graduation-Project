@@ -90,7 +90,7 @@ async function loadGames() {
         fixSidebarBackground();
 
         // Fetch games from endpoint
-        const response = await fetch('http://localhost:8080/games/games');
+        const response = await fetch('/games/games');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const games = await response.json();
 
