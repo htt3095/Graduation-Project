@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="genre.css">
 </head>
-<link rel="stylesheet" href="genre.css">
 
-
-<body data-genre="Strategy">
+<body>
     <div class="sidebar" id="sidebar">
         <a href="#" class="closebtn" onclick="closeNav()">×</a>
         <div class="settings-box">
@@ -55,32 +55,8 @@
     </nav>
     <article>
         <div id="game-container">
-            <div class="game-box" data-genre="Action">
-                <img class="game-image" src="images/game1.jpg" alt="Game Title 1">
-                <div class="game-info">
-                    <h3>Game Title 1</h3>
-                    <p>Strategy | Developer | Year</p>
-                </div>
-                <div class="game-price">$59.99</div>
-            </div>
-
-            <div class="game-box" data-genre="RPG">
-                <img class="game-image" src="images/game2.jpg" alt="Game Title 2">
-                <div class="game-info">
-                    <h3>Game Title 2</h3>
-                    <p>Strategy | Developer | Year</p>
-                </div>
-                <div class="game-price">$49.99</div>
-            </div>
-
-            <div class="game-box" data-genre="Strategy">
-                <img class="game-image" src="images/game3.jpg" alt="Game Title 3">
-                <div class="game-info">
-                    <h3>Game Title 3</h3>
-                    <p>Strategy | Developer | Year</p>
-                </div>
-                <div class="game-price">$39.99</div>
-            </div>
+            <!-- Search results will be displayed here -->
+        </div>
     </article>
     <footer style=" padding: 10px 0; text-align: center;">
         <div>
@@ -102,6 +78,7 @@
         </div>
     </footer>
     <script src="code.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>

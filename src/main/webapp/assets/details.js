@@ -121,3 +121,23 @@ function displayError(message) {
         `;
     }
 }
+
+function addToCartFromDetails() {
+    const gameTitle = document.getElementById('game-title').textContent;
+    const priceText = document.getElementById('game-price').textContent;
+    const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) / 23000; // Convert back to USD
+    const imageUrl = document.getElementById('game-image').src;
+    const gameId = new URLSearchParams(window.location.search).get('id');
+
+    addToCart(gameId, gameTitle, price, imageUrl);
+}
+
+function buyNowFromDetails() {
+    const gameTitle = document.getElementById('game-title').textContent;
+    const priceText = document.getElementById('game-price').textContent;
+    const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) / 23000; // Convert back to USD
+    const imageUrl = document.getElementById('game-image').src;
+    const gameId = new URLSearchParams(window.location.search).get('id');
+
+    addToCart(gameId, gameTitle, price, imageUrl, true);
+}

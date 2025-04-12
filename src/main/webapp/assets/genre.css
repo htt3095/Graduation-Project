@@ -593,3 +593,82 @@ nav {
     z-index: 0;
     margin-top: auto;
 }
+
+
+/* Search results */
+
+.search-results-title {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+    font-size: 1.5rem;
+}
+
+.no-results,
+.error-message {
+    text-align: center;
+    padding: var(--spacing-lg);
+    color: var(--text-light);
+}
+
+.no-results h2,
+.error-message h2 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-color);
+}
+
+.no-results p,
+.error-message p {
+    margin-bottom: var(--spacing-md);
+}
+
+
+/* Make sure search bar stays visible */
+
+.search-bar {
+    z-index: 100;
+}
+
+.loading {
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+
+/* Search Results Specific Styles */
+
+.game-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.loading {
+    color: white;
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+}
+
+.no-results,
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: white;
+}
+
+.no-results h2,
+.error-message h2 {
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.search-results-title {
+    color: white;
+    padding: 20px;
+    margin: 0;
+    border-bottom: 1px solid #444;
+}

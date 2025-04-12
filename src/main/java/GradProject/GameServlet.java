@@ -16,7 +16,7 @@ public class GameServlet extends HttpServlet {
     "SELECT g.game_id, g.name AS game_name, " +
     "c.name AS category, p.name AS platform, " +
     "d.name AS developer, pub.name AS publisher, " +
-    "g.price, g.image_url, g.release_date " +
+    "g.price, g.image_url, g.release_date, g.description " + // Added description
     "FROM Games g " +
     "JOIN Categories c ON g.category_id = c.category_id " +
     "JOIN Platforms p ON g.platform_id = p.platform_id " +
@@ -48,6 +48,7 @@ public class GameServlet extends HttpServlet {
                 gameJson.put("price", rs.getDouble("price"));
                 gameJson.put("image_url", rs.getString("image_url"));
                 gameJson.put("release_date", rs.getDate("release_date").toString());
+                gameJson.put("description", rs.getString("description")); // Added description
                 
                 jsonArray.put(gameJson);
             }

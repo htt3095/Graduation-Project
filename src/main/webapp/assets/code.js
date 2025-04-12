@@ -388,10 +388,41 @@ function logoutUser() {
         });
 }
 
+// Search functionality
+function setupSearch() {
+    const searchForm = document.querySelector('.search-container form');
+    const searchBar = document.querySelector('.search-bar');
+
+    if (!searchForm || !searchBar) return;
+
+    searchForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const query = searchBar.value.trim();
+
+        if (query) {
+            // Determine correct path based on current page
+            const isIndexPage = window.location.pathname.endsWith('index.html') ||
+                window.location.pathname.endsWith('/');
+            const isLayoutPage = window.location.pathname.endsWith('layout.html');
+
+            let searchPagePath;
+            if (isIndexPage || isLayoutPage) {
+                // Coming from index or layout page (outside assets)
+                searchPagePath = 'assets/search.html';
+            } else {
+                // Coming from other pages (inside assets)
+                searchPagePath = 'search.html';
+            }
+
+            window.location.href = `${searchPagePath}?query=${encodeURIComponent(query)}`;
+        }
+    });
+}
+
 // Initialize authentication when page loads
 document.addEventListener('DOMContentLoaded', function() {
     checkLoginStatus();
-
+    setupSearch();
     var loginForm = document.getElementById('loginForm');
     var registerForm = document.getElementById('registerForm');
 
